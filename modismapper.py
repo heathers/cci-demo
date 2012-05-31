@@ -7,12 +7,12 @@ import optparse
 #import argparse
 
 # download appropriate json file
-def catalogSearch(filename):
+def catalogSearch(field, fieldvalue):
 	pagenum = 0;
 	filelocations = []
 	while True:
-		postData = '{"query": {"query_string" : {"fields":"filename","query": "' \
-			+ filename + '"}, "range":{} }, "facets":{}, "hpages":"'+str(pagenum)+'"}'
+		postData = '{"query": {"query_string" : {"fields":"'+field+'","query": "' \
+			+ fieldvalue + '"}, "range":{} }, "facets":{}, "hpages":"'+str(pagenum)+'"}'
 		c = pycurl.Curl()
 		c.setopt(pycurl.URL, "http://ccicatalog.ci.uchicago.edu:6543/search")
 		b = StringIO.StringIO()
@@ -30,7 +30,8 @@ def catalogSearch(filename):
 
 # parse arguments filename and n
 parser = optparse.OptionParser()
-parser.add_option('-f',action='store',dest='filename')
+parser.add_option('-f',action='store',dest='field')
+parser.add_option('-v',action='store',dest='fieldvalue')
 parser.add_option('-n',action='store',dest='num',type="int")
 options, args = parser.parse_args()
 #parser = argparse.ArgumentParser(description='Map logical filename to physical filename using catalog.')
