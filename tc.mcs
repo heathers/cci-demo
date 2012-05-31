@@ -1,0 +1,9 @@
+persistent-coasters cat /bin/cat null null null
+persistent-coasters bash /bin/bash null null null
+persistent-coasters echo /bin/echo null null null
+persistent-coasters getlanduse /home/hstoller/modis/bin/getlanduse.sh null null null
+persistent-coasters analyzelanduse /home/hstoller/modis/bin/analyzelanduse2.sh null null null
+persistent-coasters colormodis /home/hstoller/modis/bin/colormodis.sh null null null
+persistent-coasters assemble /home/hstoller/modis/bin/assemble2.sh null null null
+persistent-coasters markmap /home/hstoller/modis/bin/markmap.sh  null null null
+

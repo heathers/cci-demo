@@ -1,0 +1,15 @@
+# demo4 forest 50 5 pbs
+
+landtype=${1:-urban}
+nfiles=${2:-999}
+nselect=${3:-10}
+site=${4:-local}
+
+runid=modis-$(date +%Y.%m%d.%H%M)-$landtype-$nfiles-$nselect
+
+echo runid=$runid
+
+swift -tc.file tc.mcs \
+      -sites.file sites.xml \
+       modis.swift -landtype=$landtype -nfiles=$nfiles -nselect=$nselect -runid=$runid \
+       -modisdir=$PWD/data/modis/2002 -webdir=$HOME/public_html/geo
